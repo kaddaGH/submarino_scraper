@@ -1,12 +1,13 @@
 body = Nokogiri.HTML(content)
 
-json = body.at('script:contains("window.__PRELOADED_STATE__ =")').text.scan(/window\.__PRELOADED_STATE__ =[\n\s]*?(\{.+\});/).first.first
+json =CGI.unescape( body.at('script:contains("window.__PRELOADED_STATE__ =")').text).scan(/window\.__PRELOADED_STATE__ =[\n\s]*?(\{.+\});/).first.first
+
 
 data = JSON.parse(json) rescue nil
 
 offers = data['entities']['offers'].first
 availability= (content.include?'OutOfStock"')?"":"1"
-price = offers[1][0]['salesPrice']
+price = offers[1][0]['salesPrice'] rescue ''
 promotion =  offers[1][0]['discount']['rate']  rescue 0
 promotion_text = ""
 

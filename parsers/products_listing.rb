@@ -59,7 +59,7 @@ products.each_with_index do |product, i|
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
-          'page' => step_page,
+          'page' => page['vars']['page'],
           'rank' => i + 1,
           'nbr_products_pg1' => nbr_products_pg1,
           'scrape_url_nbr_products' => scrape_url_nbr_products
