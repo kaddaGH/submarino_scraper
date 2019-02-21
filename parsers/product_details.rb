@@ -9,8 +9,9 @@ availability= (content.include?'OutOfStock"')?"":"1"
 price = offers[1][0]['salesPrice']
 promotion =  offers[1][0]['discount']['rate']  rescue 0
 promotion_text = ""
+
 if promotion.to_i>0
-  promotion_text = promotion+'% de desconto'
+  promotion_text = promotion.to_s+'% de desconto'
 end
 
 product = data['product']
