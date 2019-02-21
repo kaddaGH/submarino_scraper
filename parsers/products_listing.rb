@@ -8,7 +8,7 @@ products = data['products']
 
 
 # if ot's first page , generate pagination
-if offset == 2220 and scrape_url_nbr_products > page_size
+if offset == 0 and scrape_url_nbr_products > page_size
   nbr_products_pg1 = page_size
   step_page = 2
   offset = offset + page_size
@@ -37,7 +37,7 @@ else
 end
 
 
-products.take(2).each_with_index do |product, i|
+products.each_with_index do |product, i|
 
   pages << {
       page_type: 'product_details',
@@ -47,6 +47,7 @@ products.take(2).each_with_index do |product, i|
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
           'page' => step_page,
+          'rank' => i + 1,
           'nbr_products_pg1' => nbr_products_pg1,
           'scrape_url_nbr_products' => scrape_url_nbr_products
       }
