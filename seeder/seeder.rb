@@ -5,7 +5,6 @@ pages << {
     vars: {
         'input_type' => 'taxonomy',
         'search_term' => '-',
-        'post_params'=>taxonomy_post_params,
         'page' => 1
     }
 
@@ -21,8 +20,7 @@ search_terms.each do |search_term|
       vars: {
           'input_type' => 'search',
           'search_term' => search_term,
-          'page' => 1,
-          'post_params'=>search_post_params.gsub(/search_term/,CGI.escape(search_term))
+          'page' => 1
       }
 
 
