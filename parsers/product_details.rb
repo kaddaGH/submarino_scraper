@@ -79,7 +79,7 @@ info = {
     PRODUCT_BRAND: product['supplier'],
     PRODUCT_RANK: page['vars']['rank'],
     PRODUCT_PAGE: page['vars']['page'],
-    PRODUCT_ID: product['supplier'],
+    PRODUCT_ID: product['id'],
     PRODUCT_NAME: title,
     PRODUCT_DESCRIPTION: CGI.unescapeHTML(description).gsub(/<\/?[^>]*>/, " ").gsub(/[\s\n\r]+?/,' ').gsub(/,/,'.'),
     PRODUCT_MAIN_IMAGE_URL: product['images'][0]['big'],
