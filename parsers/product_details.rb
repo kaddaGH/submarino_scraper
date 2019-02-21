@@ -2,7 +2,6 @@ body = Nokogiri.HTML(content)
 
 json =CGI.unescape( body.at('script:contains("window.__PRELOADED_STATE__ =")').text).scan(/window\.__PRELOADED_STATE__ =[\n\s]*?(\{.+\});/).first.first
 
-
 data = JSON.parse(json) rescue nil
 
 offers = data['entities']['offers'].first
@@ -82,7 +81,7 @@ info = {
     PRODUCT_PAGE: page['vars']['page'],
     PRODUCT_ID: product['supplier'],
     PRODUCT_NAME: title,
-    PRODUCT_DESCRIPTION: CGI.unescapeHTML(description).gsub(/<\/?[^>]*>/, " ").gsub('[\s\n\r,]+?',' '),
+    PRODUCT_DESCRIPTION: CGI.unescapeHTML(description).gsub(/<\/?[^>]*>/, " ").gsub(/[\s\n\r]+?/,' ').gsub(/,/,'.'),
     PRODUCT_MAIN_IMAGE_URL: product['images'][0]['big'],
     PRODUCT_ITEM_SIZE: item_size ,
     PRODUCT_ITEM_SIZE_UOM: uom ,
