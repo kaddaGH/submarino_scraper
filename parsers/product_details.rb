@@ -39,7 +39,9 @@ brand ||= [
     'Star Nutrition', 'Monster Energy', 'Nutramino Fitness Nutrition', 'Olimp Sports Nutrition',
     'Belgian Blue', 'Maxim', 'Biotech USA', 'Gainomax', 'Chained Nutrition'
 ].find {|brand_name| title.downcase.include?(brand_name.downcase)} || ''
-
+item_size = nil
+uom = nil
+in_pack = nil
 
 [ attributes , title].each do |size_text|
   next unless size_text
@@ -53,7 +55,7 @@ brand ||= [
       /(\d*[\.,]?\d+)\s?([Oo]unce)/,
       /(\d*[\.,]?\d+)\s?([Cc][Ll])/,
       /(\d*[\.,]?\d+)\s?([Mm][Ll])/,
-      /(\d*[\.,]?\d+)\s?([Ll])/,
+      /(\d*[\.,]?\d+)\s?([Ll])\s/,
       /(\d*[\.,]?\d+)\s?([Gg])/,
       /(\d*[\.,]?\d+)\s?([Ll]itre)/,
       /(\d*[\.,]?\d+)\s?([Ss]ervings)/,
@@ -70,21 +72,34 @@ brand ||= [
 
   break item_size, uom if item_size && uom
 end
+[ attributes , title].each do |size_text|
+  match = [
+      /(\d+)\s?[xX]/,
+      /Pack of (\d+)/,
+      /Box of (\d+)/,
+      /Case of (\d+)/,
+      /(\d+)\s?[Cc]ount/,
+      /(\d+)[-\s]*?[Ll]atas/,
+      /(\d+)[-\s]*?[Uu]nidades/,
+      /(\d+)\s?[Cc][Tt]/,
+      /(\d+)[\s-]?Pack($|[^e])/,
+      /(\d+)[\s-]pack($|[^e])/,
+      /(\d+)[\s-]?[Pp]ak($|[^e])/,
+      /(\d+)[\s-]?Tray/,
+      /(\d+)\s?[Pp][Kk]/,
+      /(\d+)\s?([Ss]tuks)/i,
+      /(\d+)\s?([Pp]ak)/i,
+      /(\d+)\s?([Pp]ack)/i,
+      /[Pp]ack\s*of\s*(\d+)/,
+  ].find {|regexp| size_text =~ regexp}
+  in_pack = $1
 
-match = [
-    /(\d+)[-\s]*?[xX]/,
-    /Pack of (\d+)/,
-    /Box of (\d+)/,
-    /Case of (\d+)/,
-    /Count of (\d+)/,
-    /(\d+)[-\s]*?[Cc]ount/,
-    /(\d+)[-\s]*?[Ll]atas/,
-    /(\d+)[-\s]*?[Uu]nidades/,
-    /(\d+)[-\s]*?[Cc][Tt]/,
-    /(\d+)[\s-]?Pack($|[^e])/,
-    /(\d+)[-\s]*?[Pp][Kk]/
-].find {|regexp| match_text =~ regexp}
-in_pack = match ? $1 : '1'
+  break in_pack if in_pack
+end
+
+
+in_pack ||= '1'
+
 
 info = {
     RETAILER_ID: '117',
