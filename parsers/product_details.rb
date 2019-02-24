@@ -37,7 +37,7 @@ brand ||= [
     'Xpress', 'Core Power', 'Runa', 'Zola', 'Outlaw', 'Uptime', 'Green Dragon', 'Gas Monkey',
     'Ruckpack', 'Xing', 'Clutch', 'Chew-A-Bull', 'Matchaah', 'Surge', 'Chew A Bull', 'Vitargo',
     'Star Nutrition', 'Monster Energy', 'Nutramino Fitness Nutrition', 'Olimp Sports Nutrition',
-    'Belgian Blue', 'Maxim', 'Biotech USA', 'Gainomax', 'Chained Nutrition'
+    'Belgian Blue', 'Maxim', 'Biotech USA', 'Gainomax', 'Chained Nutrition','TNT'
 ].find {|brand_name| title.downcase.include?(brand_name.downcase)} || ''
 item_size = nil
 uom = nil
