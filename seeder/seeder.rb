@@ -12,6 +12,7 @@ pages << {
 }
 search_terms = ['Red Bull', 'RedBull', 'Energético', 'Energéticos']
 search_terms.each do |search_term|
+  break 
   pages << {
       page_type: 'products_listing',
       method: 'GET',
