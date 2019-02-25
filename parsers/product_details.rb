@@ -1,6 +1,4 @@
-body = Nokogiri.HTML(content)
-
-json =CGI.unescape( body.at('script:contains("window.__PRELOADED_STATE__ =")').text).scan(/window\.__PRELOADED_STATE__ =[\n\s]*?(\{.+\});/).first.first
+json =content.scan(/window\.__PRELOADED_STATE__ =[\n\s]*?(\{.+\});/).first.first
 
 data = JSON.parse(json) rescue nil
 
