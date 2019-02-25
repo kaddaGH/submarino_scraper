@@ -28,7 +28,7 @@ brand ||= [
     "Burn", "Njie", "Boost", "Vive", "Black", "Arctic+", "Activlab", "Air Wick", "N'Gine",
     "4Move", "i4Sport", "BLACK", "Body&Future", "X-tense", "Booster", "Rockstar", "28 Black", "Adelholzener",
     "Dr. Pepper", "Topfit", "Power System", "Berocca", "Demon", "G Force", "Lucozade", "Mother", "Nos",
-    "Phoenix", "Ovaltine", "Puraty", "Homegrown", "V", "Running With Bulls",
+    "Phoenix", "Ovaltine", "Puraty", "Homegrown",  "Running With Bulls",
     'Liquid Ice', 'All Sport', 'Kickstart', 'Bang', 'Full Throttle', 'Lyte Ade', 'Gamergy',
     'Ax Water', 'Propel', 'Nesquick', 'Up Energy', 'Wired Energy', 'Red Elixir',
     'Body Armor', 'Rip It', 'Fitaid', 'Focusaid', 'Partyaid', 'Lifeaid', 'Kicks Start', 'Bawls',
